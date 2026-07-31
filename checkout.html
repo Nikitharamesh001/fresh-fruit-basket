@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout</title>
+
+<link rel="stylesheet" href="checkout.css">
+
+</head>
+
+<body>
+
+<div class="checkout-container">
+
+<h1>Checkout</h1>
+
+<div class="order-summary">
+
+<h2>Your Order</h2>
+
+<div id="checkoutItems"></div>
+
+<h3>Total : ₹<span id="checkoutTotal">0</span></h3>
+
+</div>
+
+<form id="checkoutForm">
+
+<input
+type="text"
+id="name"
+placeholder="Full Name"
+required>
+
+<input
+type="tel"
+id="phone"
+placeholder="Phone Number"
+required>
+
+<textarea
+id="address"
+placeholder="Delivery Address"
+required></textarea>
+
+<select id="payment">
+
+<option value="COD">
+
+Cash on Delivery
+
+</option>
+
+<option value="UPI">
+
+UPI
+
+</option>
+
+</select>
+
+<div id="upiSection" style="display:none; text-align:center; margin:20px 0;">
+
+    <h3>Scan & Pay</h3>
+
+    <img
+    src="images/upi.jpg"
+    alt="UPI QR"
+    width="220">
+
+    <br><br>
+
+    <input
+        type="text"
+        id="transactionId"
+        placeholder="Enter UPI Transaction ID">
+
+</div>
+
+<button type="submit">
+
+Place Order
+
+</button>
+
+</form>
+
+</div>
+
+<script type="module" src="checkout.js"></script>
+
+
+
+</body>
+
+</html>

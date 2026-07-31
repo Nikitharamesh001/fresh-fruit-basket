@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Cart | Fresh Fruit Basket</title>
+
+<link rel="stylesheet" href="css/cart.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- Background -->
+
+<div class="background">
+
+<div class="circle one"></div>
+<div class="circle two"></div>
+<div class="circle three"></div>
+
+</div>
+
+<!-- Navbar -->
+
+<header class="navbar">
+
+<div class="logo">
+
+🍎 Fresh Fruit Basket
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="products.html">Products</a>
+
+<a href="about.html">About</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+<div class="nav-icons">
+
+<a href="wishlist.html">
+
+<i class="fa-regular fa-heart"></i>
+
+</a>
+
+<a href="profile.html">
+
+<i class="fa-regular fa-user"></i>
+
+</a>
+
+</div>
+
+</header>
+
+<!-- Cart Container -->
+
+<section class="cart-container">
+
+<div class="cart-left">
+
+<h2>
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+My Shopping Cart
+
+</h2>
+
+<div id="cartItems">
+
+<!-- Cart Items JS inda load agutte -->
+
+</div>
+
+<div class="empty-cart" id="emptyCart">
+
+<i class="fa-solid fa-basket-shopping"></i>
+
+<h3>Your Cart is Empty</h3>
+
+<p>
+
+Looks like you haven't added any fruits yet.
+
+</p>
+
+<a href="products.html" class="shop-btn">
+
+Continue Shopping
+
+</a>
+
+</div>
+
+</div>
+
+<div class="cart-right">
+
+<div class="summary-card">
+
+<h3>Order Summary</h3>
+
+<div class="summary-row">
+
+<span>Subtotal</span>
+
+<span id="subtotal">
+
+₹0
+
+</span>
+
+</div>
+
+<div class="summary-row">
+
+<span>Delivery</span>
+
+<span id="delivery">
+
+₹40
+
+</span>
+
+</div>
+
+<div class="summary-row">
+
+<span>Discount</span>
+
+<span id="discount">
+
+- ₹0
+
+</span>
+
+</div>
+
+<hr>
+
+<div class="summary-total">
+
+<span>Total</span>
+
+<span id="grandTotal">
+
+₹40
+
+</span>
+
+</div>
+
+<button id="checkoutBtn">
+
+Proceed to Checkout
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+<div class="secure-box">
+
+<i class="fa-solid fa-lock"></i>
+
+100% Secure Checkout
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Footer -->
+
+<footer class="footer">
+
+<div class="footer-content">
+
+<div class="footer-logo">
+
+🍎 Fresh Fruit Basket
+
+</div>
+
+<p>
+
+Fresh Fruits • Fast Delivery • Healthy Living
+
+</p>
+
+<div class="social-icons">
+
+<a href="#">
+
+<i class="fa-brands fa-facebook-f"></i>
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-instagram"></i>
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-x-twitter"></i>
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-youtube"></i>
+
+</a>
+
+</div>
+
+</div>
+
+<p class="copyright">
+
+© 2026 Fresh Fruit Basket. All Rights Reserved.
+
+</p>
+
+</footer>
+
+<script src="js/cart.js"></script>
+
+</body>
+
+</html>

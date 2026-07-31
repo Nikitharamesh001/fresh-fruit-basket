@@ -1,0 +1,184 @@
+// ======================================
+// FIREBASE IMPORTS
+// ======================================
+
+import {
+auth,
+db,
+onAuthStateChanged,
+collection,
+getDocs,
+addDoc,
+deleteDoc,
+doc,
+serverTimestamp
+} from "./firebase.js";
+
+
+// ======================================
+// HTML ELEMENTS
+// ======================================
+
+const checkoutItems = document.getElementById("checkoutItems");
+
+const checkoutTotal = document.getElementById("checkoutTotal");
+
+const checkoutForm = document.getElementById("checkoutForm");
+
+let total = 0;
+
+let cartData = [];
+
+
+// ======================================
+// AUTH CHECK
+// ======================================
+
+onAuthStateChanged(auth, (user) => {
+
+if(user){
+
+loadCheckout(user);
+
+}
+else{
+
+window.location.href="login.html";
+
+}
+
+});
+
+
+// ======================================
+// LOAD CART
+// ======================================
+
+async function loadCheckout(user){
+
+checkoutItems.innerHTML="";
+
+total=0;
+
+cartData=[];
+
+const snapshot=await getDocs(
+
+collection(db,"users",user.uid,"cart")
+
+);
+
+snapshot.forEach((cartDoc)=>{
+
+const item=cartDoc.data();
+
+cartData.push({
+
+id:cartDoc.id,
+
+...item
+
+});
+
+total+=item.price*item.quantity;
+
+checkoutItems.innerHTML+=`
+
+<div class="checkout-item">
+
+<span>
+
+${item.name} × ${item.quantity}
+
+</span>
+
+<b>
+
+₹${item.price*item.quantity}
+
+</b>
+
+</div>
+
+`;
+
+});
+
+checkoutTotal.innerText=total;
+
+}
+
+
+// ======================================
+// PLACE ORDER
+// ======================================
+
+checkoutForm.addEventListener("submit",async(e)=>{
+
+e.preventDefault();
+
+const user=auth.currentUser;
+
+const name=document.getElementById("name").value;
+
+const phone=document.getElementById("phone").value;
+
+const address=document.getElementById("address").value;
+
+const payment=document.getElementById("payment").value;
+
+try{
+
+await addDoc(
+
+collection(db,"users",user.uid,"orders"),
+
+{
+
+name,
+
+phone,
+
+address,
+
+payment,
+
+items:cartData,
+
+total,
+
+status:"Pending",
+
+createdAt:serverTimestamp()
+
+}
+
+);
+
+// Clear Cart
+
+for(const item of cartData){
+
+await deleteDoc(
+
+doc(db,"users",user.uid,"cart",item.id)
+
+);
+
+}
+
+alert("🎉 Order Placed Successfully!");
+
+window.location.href="orders.html";
+
+}
+
+catch(error){
+
+console.log(error);
+
+alert("Failed to place order.");
+
+}
+
+});
